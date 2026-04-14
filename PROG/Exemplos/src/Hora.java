@@ -10,6 +10,11 @@ public class Hora {
     }
 
     public Hora (int horas, int minutos, int segundos){
-
+        if (horas >= 0) this.horas = horas;
+        else this.horas = 0;
+        if (minutos < 60 && minutos >= 0) this.minutos = minutos;
+        else this.minutos = 0;
+        if (segundos >= 0 && segundos < 60) this.segundos = segundos;
+        else this.segundos = 0;
     }
 }
