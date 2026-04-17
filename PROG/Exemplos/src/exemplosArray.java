@@ -11,6 +11,7 @@ public class exemplosArray {
         for (int i = 0; i<letras.length;i++)
             System.out.println("A letra é: " + letras[i]);
 
-
+        for (int n: numeros)
+            System.out.println("O número é: " + n);
     }
 }
