@@ -17,4 +17,11 @@ public class Hora {
         if (segundos >= 0 && segundos < 60) this.segundos = segundos;
         else this.segundos = 0;
     }
+    public String toString(){
+        return "Horas: "+ horas + " Minutos: " + minutos + " Segundos: " + segundos;
+    }
+    public static void main (String [] args){
+        Hora h = new Hora();
+        System.out.println(h);
+    }
 }
