@@ -13,5 +13,15 @@ public class exemplosArray {
 
         for (int n: numeros)
             System.out.println("O número é: " + n);
+
+        String [] nomes;
+        nomes = new String[10];
+        nomes [0] = "Hugo";
+        nomes [1] = "Pedro";
+        nomes [2] = new String ("Ana");
+
+        Persoa [] equipo;
+        equipo = new Persoa[5];
+        equipo [0] = new Persoa("Ramón","4567U",41);
     }
 }
