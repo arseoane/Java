@@ -23,5 +23,9 @@ public class exemplosArray {
         Persoa [] equipo;
         equipo = new Persoa[5];
         equipo [0] = new Persoa("Ramón","4567U",41);
+        equipo [1] = new Persoa ("Jose","8642H",32);
+        equipo [2] = new Persoa ("Carmen","9876Y",41);
+        equipo [3] = new Persoa ("Fina","1234R",17);
+        equipo [4] = new Persoa ("Pili","3258T",33);
     }
 }
