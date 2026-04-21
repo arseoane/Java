@@ -27,5 +27,13 @@ public class exemplosArray {
         equipo [2] = new Persoa ("Carmen","9876Y",41);
         equipo [3] = new Persoa ("Fina","1234R",17);
         equipo [4] = new Persoa ("Pili","3258T",33);
+
+        Persoa dniMenor = equipo[0];
+        for (int i = 1; i < equipo.length; i++){
+            if (dniMenor.dni.compareTo(equipo[i].dni)) {
+                dniMenor = equipo[i];
+            }
+        }
+
     }
 }
