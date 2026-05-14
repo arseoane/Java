@@ -30,6 +30,23 @@ public class Boletin13 {
         System.out.println(numeros);
     }
 
+    public static void Ejercicio3() {
+        ArrayList<Integer> numeros = new ArrayList<>();
+        Random rand = new Random();
+
+        for (int i = 0; i < 100; i++) {
+            numeros.add(rand.nextInt(10) + 1);
+        }
+
+        System.out.println("Antes de eliminar:");
+        System.out.println(numeros);
+
+        numeros.removeIf(n -> n == 5 || n == 7);
+
+        System.out.println("Después de eliminar:");
+        System.out.println(numeros);
+    }
+
     public static void main(String[] args) {
         Integer[] primera = new Integer[10];
         Integer[] segunda = new Integer[10];
