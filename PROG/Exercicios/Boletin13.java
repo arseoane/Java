@@ -1,6 +1,7 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Random;
+import java.io.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 
 public class Boletin13 {
@@ -47,11 +48,241 @@ public class Boletin13 {
         System.out.println(numeros);
     }
 
+    public static void Ejercicio4() {
+        Scanner sc = new Scanner(System.in);
+        List<Double> positivos = new ArrayList<>();
+        List<Double> negativos = new ArrayList<>();
+
+        while (true) {
+            double n = sc.nextDouble();
+            if (n == 0) break;
+            if (n > 0) positivos.add(n);
+            else negativos.add(n);
+        }
+
+        double sumaPos = 0;
+        double sumaNeg = 0;
+
+        for (double x : positivos) sumaPos += x;
+        for (double x : negativos) sumaNeg += x;
+
+        System.out.println(positivos);
+        System.out.println(negativos);
+        System.out.println(sumaPos);
+        System.out.println(sumaNeg);
+
+        positivos.removeIf(x -> x > 10);
+        negativos.removeIf(x -> x < -10);
+
+        System.out.println(positivos);
+        System.out.println(negativos);
+    }
+
+    public static void Ejercicio5() {
+        Scanner sc = new Scanner(System.in);
+        List<Integer> nums = new ArrayList<>();
+
+        while (true) {
+            int n = sc.nextInt();
+            if (n == -1) break;
+            if (n > 0) nums.add(n);
+        }
+
+        for (int i = 0; i < nums.size(); i++) {
+            if (i % 2 == 0) {
+                System.out.println(nums.get(i) * 100);
+            }
+        }
+    }
+
+    public static void Ejercicio6() {
+        List<Integer> lista = new ArrayList<>();
+        Random r = new Random();
+
+        for (int i = 0; i < 20; i++) {
+            lista.add(r.nextInt(10) + 1);
+        }
+
+        Set<Integer> senRepetir = new HashSet<>(lista);
+
+        Set<Integer> repetidos = new HashSet<>();
+        Set<Integer> vistos = new HashSet<>();
+
+        for (int x : lista) {
+            if (!vistos.add(x)) repetidos.add(x);
+        }
+
+        Set<Integer> unicos = new HashSet<>();
+        for (int x : lista) {
+            if (Collections.frequency(lista, x) == 1) unicos.add(x);
+        }
+
+        System.out.println(lista);
+        System.out.println(senRepetir);
+        System.out.println(repetidos);
+        System.out.println(unicos);
+    }
+
+    public static <E> Set<E> union(Set<E> c1, Set<E> c2) {
+        Set<E> res = new HashSet<>(c1);
+        res.addAll(c2);
+        return res;
+    }
+
+    public static <E> Set<E> interseccion(Set<E> c1, Set<E> c2) {
+        Set<E> res = new HashSet<>(c1);
+        res.retainAll(c2);
+        return res;
+    }
+
+    static class Rexistro {
+        double temp;
+        LocalDateTime hora;
+
+        Rexistro(double temp) {
+            this.temp = temp;
+            this.hora = LocalDateTime.now();
+        }
+
+        public String toString() {
+            return temp + " " + hora;
+        }
+    }
+
+    public static void Ejercicio9() throws Exception {
+        Scanner sc = new Scanner(System.in);
+        List<Rexistro> rexistros = new ArrayList<>();
+
+        while (true) {
+            System.out.println("1 Novo rexistro");
+            System.out.println("2 Listar");
+            System.out.println("3 Estatística");
+            System.out.println("4 Saír");
+
+            int op = sc.nextInt();
+
+            if (op == 1) {
+                double t = sc.nextDouble();
+                rexistros.add(new Rexistro(t));
+            } else if (op == 2) {
+                for (Rexistro r : rexistros) System.out.println(r);
+            } else if (op == 3) {
+                double max = rexistros.stream().mapToDouble(x -> x.temp).max().orElse(0);
+                double min = rexistros.stream().mapToDouble(x -> x.temp).min().orElse(0);
+                double avg = rexistros.stream().mapToDouble(x -> x.temp).average().orElse(0);
+                System.out.println(max);
+                System.out.println(min);
+                System.out.println(avg);
+            } else {
+                DateTimeFormatter f = DateTimeFormatter.ofPattern("yyyyMMdd");
+                String name = "rexistros" + LocalDateTime.now().format(f) + ".dat";
+                ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(name));
+                oos.writeObject(rexistros);
+                oos.close();
+                break;
+            }
+        }
+    }
+
+    static class Produto implements Serializable {
+        String codigo;
+        int cantidade;
+
+        Produto(String c, int q) {
+            codigo = c;
+            cantidade = q;
+        }
+    }
+
+    public static void Ejercicio10() throws Exception {
+        Scanner sc = new Scanner(System.in);
+        Map<String, Produto> stock = new HashMap<>();
+
+        while (true) {
+            System.out.println("1 Alta");
+            System.out.println("2 Baixa");
+            System.out.println("3 Actualizar");
+            System.out.println("4 Listar");
+            System.out.println("5 Saír");
+
+            int op = sc.nextInt();
+
+            if (op == 1) {
+                String c = sc.next();
+                int q = sc.nextInt();
+                stock.put(c, new Produto(c, q));
+            } else if (op == 2) {
+                String c = sc.next();
+                stock.remove(c);
+            } else if (op == 3) {
+                String c = sc.next();
+                int q = sc.nextInt();
+                if (stock.containsKey(c)) stock.get(c).cantidade = q;
+            } else if (op == 4) {
+                for (Produto p : stock.values()) {
+                    System.out.println(p.codigo + " " + p.cantidade);
+                }
+            } else {
+                ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("stock.dat"));
+                oos.writeObject(stock);
+                oos.close();
+                break;
+            }
+        }
+    }
+
+    static class Academico implements Comparable<Academico>, Serializable {
+        String nome;
+        int ano;
+
+        Academico(String n, int a) {
+            nome = n;
+            ano = a;
+        }
+
+        public int compareTo(Academico o) {
+            return nome.compareTo(o.nome);
+        }
+    }
+
+    public static boolean nuevoAcademico(Map<Character, Academico> academia, Academico novo, Character letra) {
+        if (!Character.isLetter(letra)) return false;
+        academia.put(letra, novo);
+        return true;
+    }
+
+    public static void Ejercicio11() {
+        Map<Character, Academico> academia = new HashMap<>();
+
+        academia.put('A', new Academico("Ana", 2010));
+        academia.put('B', new Academico("Luis", 2012));
+        academia.put('C', new Academico("Pedro", 2008));
+        academia.put('D', new Academico("Maria", 2015));
+        academia.put('E', new Academico("Juan", 2005));
+
+        List<Academico> lista = new ArrayList<>(academia.values());
+        Collections.sort(lista);
+
+        for (Academico a : lista) {
+            System.out.println(a.nome + " " + a.ano);
+        }
+
+        List<Character> letras = new ArrayList<>(academia.keySet());
+        Collections.sort(letras);
+
+        for (Character c : letras) {
+            Academico a = academia.get(c);
+            System.out.println(c + " " + a.nome + " " + a.ano);
+        }
+    }
+
     public static void main(String[] args) {
         Integer[] primera = new Integer[10];
         Integer[] segunda = new Integer[10];
 
         Ejercicio1(primera, segunda);
+        Ejercicio2();
+        Ejercicio3();
 
     }
 
