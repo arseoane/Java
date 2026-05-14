@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.Random;
 
-public class BoletinVectores {
+public class Boletín11 {
 
     public static void main(String[] args) {
         
