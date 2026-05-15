@@ -276,14 +276,20 @@ public class Boletin13 {
         }
     }
 
-    public static void main(String[] args) {
-        Integer[] primera = new Integer[10];
-        Integer[] segunda = new Integer[10];
+    public static void main(String[] args) throws Exception {
+        Integer[] primera = {1,2,3};
+        Integer[] segunda = {4,5,6};
 
-        Ejercicio1(primera, segunda);
+        System.out.println(Arrays.toString(Ejercicio1(primera, segunda)));
+
         Ejercicio2();
         Ejercicio3();
-
+        Ejercicio4();
+        Ejercicio5();
+        Ejercicio6();
+        Ejercicio9();
+        Ejercicio10();
+        Ejercicio11();
     }
 
 }
