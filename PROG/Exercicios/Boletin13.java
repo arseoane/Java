@@ -310,18 +310,34 @@ public class Boletin13 {
     }
 
     public static void main(String[] args) throws Exception {
-        Integer[] primera = {1, 2, 3};
-        Integer[] segunda = {4, 5, 6};
+        System.out.print("Ejercicio a visualizar: ");
+        Scanner sc = new Scanner(System.in);
+        int op = sc.nextInt();
 
-        System.out.println(Arrays.toString(Ejercicio1(primera, segunda)));
+        if (op == 1) {
+            Integer[] primera = {1, 2, 3};
+            Integer[] segunda = {4, 5, 6};
 
-        Ejercicio2();
-        Ejercicio3();
-        Ejercicio4();
-        Ejercicio5();
-        Ejercicio6();
-        Ejercicio9();
-        Ejercicio10();
-        Ejercicio11();
+            System.out.println(Arrays.toString(Ejercicio1(primera, segunda)));
+        } else if (op == 2) {
+            Ejercicio2();
+        } else if (op == 3) {
+            Ejercicio3();
+        } else if (op == 4) {
+            Ejercicio4();
+        } else if (op == 5) {
+            Ejercicio5();
+        } else if (op == 6) {
+            Ejercicio6();
+        } else if (op == 9) {
+            Ejercicio9();
+        } else if (op == 10) {
+            Ejercicio10();
+        } else if (op == 11) {
+            Ejercicio11();
+        } else {
+            System.out.println("Opción inválida");
+        }
+
     }
 }
