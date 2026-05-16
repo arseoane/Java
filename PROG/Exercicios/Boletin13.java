@@ -6,13 +6,14 @@ import java.util.*;
 public class Boletin13 {
 
     public static <T> T[] Ejercicio1(T[] primeira, T[] segunda) {
+        System.out.println("\nEJERCICIO 1");
         T[] resultado = Arrays.copyOf(primeira, primeira.length + segunda.length);
         System.arraycopy(segunda, 0, resultado, primeira.length, segunda.length);
         return resultado;
     }
 
     public static void Ejercicio2() {
-        System.out.println("EJERCICIO 2");
+        System.out.println("\nEJERCICIO 2");
 
         ArrayList<Integer> numeros = new ArrayList<>();
         Random rand = new Random();
@@ -31,7 +32,7 @@ public class Boletin13 {
     }
 
     public static void Ejercicio3() {
-        System.out.println("EJERCICIO 3");
+        System.out.println("\nEJERCICIO 3");
 
         ArrayList<Integer> numeros = new ArrayList<>();
         Random rand = new Random();
@@ -50,7 +51,7 @@ public class Boletin13 {
     }
 
     public static void Ejercicio4() {
-        System.out.println("EJERCICIO 4");
+        System.out.println("\nEJERCICIO 4");
 
         Scanner sc = new Scanner(System.in);
         List<Double> positivos = new ArrayList<>();
@@ -83,7 +84,7 @@ public class Boletin13 {
     }
 
     public static void Ejercicio5() {
-        System.out.println("EJERCICIO 5");
+        System.out.println("\nEJERCICIO 5");
 
         Scanner sc = new Scanner(System.in);
         List<Integer> nums = new ArrayList<>();
@@ -105,7 +106,7 @@ public class Boletin13 {
     }
 
     public static void Ejercicio6() {
-        System.out.println("EJERCICIO 6");
+        System.out.println("\nEJERCICIO 6");
 
         List<Integer> lista = new ArrayList<>();
         Random r = new Random();
@@ -161,7 +162,7 @@ public class Boletin13 {
     }
 
     public static void Ejercicio9() throws Exception {
-        System.out.println("EJERCICIO 9");
+        System.out.println("\nEJERCICIO 9");
 
         Scanner sc = new Scanner(System.in);
         List<Rexistro> rexistros = new ArrayList<>();
@@ -214,7 +215,7 @@ public class Boletin13 {
     }
 
     public static void Ejercicio10() throws Exception {
-        System.out.println("EJERCICIO 10");
+        System.out.println("\nEJERCICIO 10");
 
         Scanner sc = new Scanner(System.in);
         Map<String, Produto> stock = new HashMap<>();
@@ -280,7 +281,7 @@ public class Boletin13 {
     }
 
     public static void Ejercicio11() {
-        System.out.println("EJERCICIO 11");
+        System.out.println("\nEJERCICIO 11");
 
         Map<Character, Academico> academia = new HashMap<>();
 
@@ -312,7 +313,6 @@ public class Boletin13 {
         Integer[] primera = {1, 2, 3};
         Integer[] segunda = {4, 5, 6};
 
-        System.out.println("EJERCICIO 1");
         System.out.println(Arrays.toString(Ejercicio1(primera, segunda)));
 
         Ejercicio2();
